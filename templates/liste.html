@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name=" viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create user</title>
+    <style>
+        body
+        {
+            background-color: rgb(107, 173, 151);
+            padding: 0;
+        }
+        .co
+        {
+            display: flex;
+            justify-content: center;
+
+            width: 100%;
+            height: 500px;
+            margin-top: 50px;
+            font-size: 18;
+
+        }
+
+        .ce
+        {
+            overflow: scroll;
+            width: 35%;
+            height: 100%;
+            border-radius: 7px;
+            background-color: aliceblue;
+
+        }
+
+        .ce::-webkit-scrollbar
+        {
+            width: 4px;
+        }
+
+        .ce::-webkit-scrollbar-thumb
+        {
+            background-color: #8f8f93;
+            width: 100%;
+            padding-top: 12px;
+        }
+
+        .el 
+        {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            
+            font-size: large;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+            margin-top: 13px;
+        }
+
+        .li 
+        {
+            color: rgb(44, 44, 46);
+            text-decoration: none;
+        }
+
+        table
+        {
+            width: 100%;
+
+        }
+
+        .first
+        {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            height: 30px;
+           
+        }
+
+        .cet 
+        {
+            display: flex;
+            justify-content: space-between;
+            width: 25%;
+            height: 100%;
+            
+        }
+        .user
+        {
+            width: 60%;
+
+            border: 0;
+            border-bottom: 1px solid gray;
+        }
+
+        .user:focus
+        {
+            border: 0;
+            border-bottom: 1px solid gray; 
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="first">
+        <div class="cet"> 
+            <input type="text" name="user_name" class="user">
+            <button type="submit">Okay</button>
+        </div>
+    </div>
+
+    <div class="co">
+
+        <div class="ce">
+            <table>
+
+                {% for el in lis%}
+                <tr class="el">
+                    <td class="texte">{{el.name}} {{el.last_name}}</td> 
+                    <td><a href="{% url 'asce' el.id %}" class="li">Ascendants</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+            
+        </div>
+    </div>
+</body>
+</html>

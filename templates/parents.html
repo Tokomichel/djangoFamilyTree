@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body
+        {
+            background-color: rgb(107, 173, 151);
+        }
+        
+
+        .co
+        {
+            width: 100%;
+            height: 250px;
+            margin-top: 100px;
+            /* background-color: aqua; */
+
+            display: flex;
+            justify-content: space-around;
+            
+        }
+
+        .p1
+        {
+            width: 20%;
+            height: 100%;
+            background-color: rgb(183, 89, 23);
+            padding: 5px;
+
+            border-radius: 7px;
+        }
+
+        .pe
+        {
+            width: 100%;
+            height: 15%;
+
+            font: 1.8em sans-serif;
+
+            display: flex;
+            justify-content: center;
+
+        }
+        
+        .pi
+        {
+            margin-top: 10px;
+
+            width: 100%;
+            height: 15%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            border-bottom: 1px solid rgb(54, 52, 52);
+            font: 0.9em sans-serif;
+        }
+
+        .chil
+        {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: rgba(255, 255, 0, 0);
+        }
+
+        .e
+        {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            font-size: 1.2em;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .li 
+        {
+            width: 100%;
+            height: 15%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4em;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .im
+        {
+            width: 25%;
+            height: 15px;
+
+        }
+
+        span
+        {
+            margin-top: 15px;
+        }
+        a
+        {
+            color: black;
+        }
+
+        a.q
+        {
+            color: black;
+            text-decoration: none;
+        }
+
+        button
+        {
+            width: 150%;
+            height: 180%;
+            font-size: 0.8em;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            border-radius: 7px;
+            border: 0;
+            background-color: rgb(183, 89, 23);
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="co">
+        <div class="p1">
+            <div class="pe">
+                {% if u1.sexe == 'homme' %}
+                Pere
+                {% else %}
+                Mere
+                {% endif %}
+            </div>
+            <div class="pi"><span>Nom: {{ u1.name }}</span></div>
+            <div class="pi"><span>Prenom: {{ u1.last_name }}</span></div>
+            <div class="pi"><span>user name: {{ u1.user_name }}</span></div>
+            <div class="e">
+                <a href="{% url 'asce' u1.user_name %}">Parents</a>
+            </div>
+        </div>
+
+        <div class="p1 chil">
+            <div class="li">
+                <div class="im">
+
+                    <button type="button"><a href="{% url 'desce' u1.user_name %}" class="q">Enfants</a></button>
+                </div>
+            </div>
+        </div>
+        <div class="p1">
+            <div class="pe">
+                {% if u2.sexe == 'homme' %}
+                Pere
+                {% else %}
+                Mere
+                {% endif %}
+            </div>
+            <div class="pi"><span>Nom: {{ u2.name }}</span></div>
+            <div class="pi"><span>Prenom: {{ u2.last_name }}</span></div>
+            <div class="pi"><span>user name: {{ u2.user_name }}</span></div>
+            <div class="e">
+                <a href="{% url 'asce' u2.user_name %}">Parents</a>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

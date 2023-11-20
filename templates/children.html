@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body
+        {
+            background-color: rgb(107, 173, 151);
+        }
+
+
+        .cs
+        {
+            margin-top: 30px;
+            width: 100%;
+            height: 500px;
+            /* background-color: aqua; */
+
+            display: flex;
+            justify-content: center;
+        }
+
+        .ca
+        {
+            width: 40%;
+            height: 100%;
+            /* background-color: rgb(82, 82, 171); */
+            overflow: scroll;
+        }
+
+        .ca::-webkit-scrollbar
+        {
+            width: 4px;
+        }
+
+        .ca::-webkit-scrollbar-thumb
+        {
+            background-color: #8f8f93;
+            width: 100%;
+        }
+
+        .it 
+        {
+            display: flex;
+            justify-content: space-between;
+            width: 94%;
+            height: 8%;
+            margin-left: 15px;
+            margin-top: 15px;
+            padding-top: 15px;
+            padding-left: 7px;
+            padding-right: 7px;
+
+            border-radius: 6px;
+            background-color: rgb(150, 197, 57);
+
+            color: rgb(41, 41, 42);
+            font-size: 1.2em;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        a
+        {
+            color: rgb(41, 41, 42);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cs">
+        <div class="ca">
+            {% for el in users %}
+            <div class="it">
+                <span class="om">{{ el.name }} {{el.last_name}}</span>
+                <a href="{% url 'asce' el.user_name %}"><u>Parents</u></a>
+                <a href="{% url 'desce' el.user_name %}"><u>Enfants</u></a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

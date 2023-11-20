@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find match</title>
+    <style>
+        body
+        {
+            background-color: rgb(107, 173, 151);
+        }
+        .co
+        {
+            display: flex;
+            justify-content: center;
+
+            width: 100%;
+            height: 300px;
+            margin-top: 50px;
+            font-size: 18;
+        }
+
+        .co .cs
+        {
+            width: 17%;
+            height: 100%;
+            border: 1px solid rgb(65, 63, 63);
+            border-radius: 7px;
+            padding: 2px;
+            padding-top: 18px;
+            margin-top: 20px;
+
+            background-color: aliceblue;
+        }
+
+        .i
+        {
+
+            width: 90%;
+            height: 20px;
+            border: 0;
+            border-bottom: 1px solid gray;
+            background-color: aliceblue;
+        }
+
+        .button
+        {
+            width: 90px;
+            height: 30px;
+            background-color: rgb(101, 143, 129);
+            border: 1px solid rgb(236, 233, 233);
+            border-radius: 7%;
+            color: aliceblue;
+        }
+
+        .align
+        {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .conte
+        {
+            width: 88%;
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            /* padding: 0 12px; */
+        }
+        .select
+        {
+            color: rgb(70, 69, 69);
+            height: 20px;
+            border: 0;
+            border-bottom: 1px solid rgb(89, 87, 87);
+            background-color: aliceblue;
+        }
+        .select:focus
+        {
+            border: 0;
+            border-bottom: 1px solid rgb(89, 87, 87);
+        }
+        .i:focus
+        {
+            border: 0;
+            border-bottom: 1px solid rgb(89, 87, 87);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="co">
+        <div class="cs">
+            <form method="post">
+                {% csrf_token %}
+                <center>
+                <input  class="i" name="p1" type="text" placeholder="Personne 1"><br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <input class="i" name="p2" type="text" placeholder="Personne 2"><br>
+                
+                
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <button type="submit" class="button">SUBMIT</button></center>
+                
+            </form>
+        </div>
+    </div>
+</body>
+</html>

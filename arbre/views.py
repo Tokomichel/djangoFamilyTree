@@ -27,12 +27,14 @@ def get_ascendants(personne: Personne):
 
     return ascendants
 
+
 def nombres_communs(liste1, liste2):
     communs = []
     for nombre in liste1:
         if nombre in liste2:
             communs.append(nombre)
     return communs
+
 
 # Create your views here.
 
@@ -63,6 +65,7 @@ def view(req: WSGIRequest):
 
     return render(req, "index.html", {"hommes": hommes, "femmes": femmes})
 
+
 def match(req: WSGIRequest):
     if req.method == 'POST':
         u1 = Personne.objects.get(user_name=req.POST['p1'])
@@ -70,12 +73,10 @@ def match(req: WSGIRequest):
 
         asc1 = get_ascendants(u1)
         asc2 = get_ascendants(u2)
-        c = nombres_communs(asc1, asc2)
+        c = nombres_communs(asc1, asc2)[:2]
         p1 = Personne.objects.get(id=c[0])
         p2 = Personne.objects.get(id=c[1])
         return render(req, "parents.html", {"u1": p1, "u2": p2})
-
-
 
     return render(req, 'match.html')
 
@@ -83,6 +84,8 @@ def match(req: WSGIRequest):
 def liste(req: WSGIRequest):
     lis = Personne.objects.all()
     return render(req, 'liste.html', {"lis": lis})
+
+
 def ascendant(req: WSGIRequest, un: str):
     ok = Personne.objects.get(user_name=un)
     try:
@@ -91,6 +94,8 @@ def ascendant(req: WSGIRequest, un: str):
         return render(req, "parents.html", {"u1": pere, "u2": mere})
     except Personne.DoesNotExist:
         return HttpResponse(f"<h2>Les parents de {ok.name} {ok.last_name} ne sont pas encore fichies dans la BD</h2>")
+
+
 def descendant(req: WSGIRequest, un: str):
     ok = Personne.objects.get(user_name=un)
 
@@ -99,7 +104,9 @@ def descendant(req: WSGIRequest, un: str):
         enfants = Personne.objects.filter(mere=ok.id)
 
     return render(req, "children.html", {"users": enfants})
-def parent(req: WSGIRequest,user_name: str):
+
+
+def parent(req: WSGIRequest, user_name: str):
     u = Personne.objects.get(user_name=user_name)
     p = Personne.objects.get(id=u.pere)
     m = Personne.objects.get(id=u.mere)

@@ -19,7 +19,9 @@ class PersoView(admin.ModelAdmin):
         else:
             return me
 
-
+class PersoDbAdminView(admin.ModelAdmin):
+    list_display = ["id", "user_name", "sexe", "name", "last_name", "pere", "mere"]
 # Register your models here.
 
 admin.site.register(Personne, PersoView)
+# admin.site.register(Personne, PersoDbAdminView)

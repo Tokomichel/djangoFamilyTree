@@ -35,7 +35,10 @@ def nombres_communs(liste1, liste2):
             communs.append(nombre)
     return communs
 
-
+def isAsc(fils: Personne, test: Personne):
+    if test.id == fils.pere or test.id == fils.mere:
+        return True
+    return False
 # Create your views here.
 
 def home(req: WSGIRequest):
@@ -70,6 +73,8 @@ def match(req: WSGIRequest):
     if req.method == 'POST':
         u1 = Personne.objects.get(user_name=req.POST['p1'])
         u2 = Personne.objects.get(user_name=req.POST['p2'])
+        if isAsc(u1, u2) or isAsc(u2, u1):
+            return HttpResponse("<h2 align='center'>Ils sont des parents directe</h2>")
 
         asc1 = get_ascendants(u1)
         asc2 = get_ascendants(u2)
